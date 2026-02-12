@@ -1,0 +1,23 @@
+import random
+
+def simulate_conditions(G, leak_probability=0.1):
+    for node in G.nodes:
+        # baseline fluctuations
+        G.nodes[node]["pressure"] += random.uniform(-5, 5)
+        G.nodes[node]["ph"] += random.uniform(-0.3, 0.3)
+
+        # inject leak
+        if random.random() < leak_probability:
+            G.nodes[node]["pressure"] -= random.uniform(15, 25)
+            G.nodes[node]["leak"] = 1
+        else:
+            G.nodes[node]["leak"] = 0
+
+        # inject abnormal pH
+        if random.random() < 0.05:
+            G.nodes[node]["ph"] += random.uniform(1.5, 2.5)
+            G.nodes[node]["abnormal"] = 1
+        else:
+            G.nodes[node]["abnormal"] = 0
+
+    return G
