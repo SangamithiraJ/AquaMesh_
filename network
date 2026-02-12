@@ -1,0 +1,13 @@
+import networkx as nx
+import random
+
+def generate_pipeline_network(grid_size=6):
+    G = nx.grid_2d_graph(grid_size, grid_size)
+
+    for node in G.nodes:
+        G.nodes[node]["pressure"] = random.uniform(40, 60)
+        G.nodes[node]["ph"] = random.uniform(6.8, 7.5)
+        G.nodes[node]["leak"] = 0
+        G.nodes[node]["abnormal"] = 0
+
+    return G
