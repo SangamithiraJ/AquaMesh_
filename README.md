@@ -1,0 +1,1 @@
+An AI-driven water distribution monitoring system that simulates a pipeline network, detects leaks and chemical abnormalities, and suggests intelligent rerouting — all through an interactive dashboard.
